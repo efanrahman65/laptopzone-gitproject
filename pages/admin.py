@@ -11,5 +11,5 @@ class TeamAdmin(admin.ModelAdmin):
 
     list_display = ('id', 'thumbnail', 'first_name', 'designation', 'created_date')
     list_display_links = ('id', 'first_name')
-
+    
 admin.site.register(Team, TeamAdmin)
