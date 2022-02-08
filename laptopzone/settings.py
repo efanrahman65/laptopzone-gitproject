@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -23,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'qr8(np1k8j4s$72!qyp%1e)8@l+#-h#9add)l@#hf2b%i676rt'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -63,6 +64,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'laptopzone.urls'
@@ -89,16 +91,18 @@ WSGI_APPLICATION = 'laptopzone.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'laptopzone_db',
-        'USER': 'postgres',
-        'PASSWORD': 'efan1234',
-        'HOST': 'localhost',
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'laptopzone_db',
+#         'USER': 'postgres',
+#         'PASSWORD': 'efan1234',
+#         'HOST': 'localhost',
+#     }
+# }
 
-    }
-}
+DATABASES = {'default': dj_database_url.config(default='postgres://postgres:efan1234@localhost/laptopzone_db')}
+
 
 
 # Password validation
@@ -169,3 +173,6 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'efanrahman32824@gmail.com'
 EMAIL_HOST_PASSWORD = 'lilboobigboo'
 EMAIL_USE_TLS = True
+
+# Whitenoise settings
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
