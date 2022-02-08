@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% block title %} | {{single_laptop.laptop_title}} {% endblock %}
+
 {% block content %}
 
 {% load static %}
@@ -18,7 +20,7 @@
 </div>
 <!-- Sub Banner end -->
 
-<!-- Car details page start -->
+<!--Laptop details page start -->
 <div class="car-details-page content-area-6">
     <div class="container">
         <div class="row">
@@ -26,12 +28,13 @@
                 <div class="car-details-section">
                     <!-- Heading start -->
                     <div class="heading-car clearfix">
+                      {% include 'includes/messages.html' %}
                         <div class="pull-left">
                             <h3>{{single_laptop.laptop_title}}</h3>
 
                         </div>
                         <div class="pull-right">
-                            <h3><span>{{single_laptop.price | intcomma}}</span></h3>
+                            <h3><span>BDT {{single_laptop.price | intcomma}}</span></h3>
                         </div>
                     </div>
                     <div id="carDetailsSlider" class="carousel car-details-sliders slide mb-40">
@@ -157,22 +160,33 @@
                       <div class="modal-dialog">
                         <div class="modal-content">
                           <div class="contact-dealer modal-header">
-                            <!-- <h5 class="modal-title" id="inquiryModalLabel">Contact Dealer</h5> -->
-                            <img src="img/logos/logo-black-white.png">
+                            <!-- <h5 class="modal-title" id="inquiryModalLabel">Contact Dealer</h5>
+                            <img src="img/logos/black-logo.png">-->
                             <button type="button" class="close" data-dismiss="modal">
                               <span>&times;</span>
                             </button>
                           </div>
                           <div class="modal-body">
-                            <form action="#">
+                            <form action="{% url 'inquiry' %}" method='POST'>
+                              {% csrf_token %}
+
+                              {% if user.is_authenticated %}
+                                  <input type="hidden" name="user_id" value="{{user.id}}">
+                              {% else %}
+                                  <input type="hidden" name="user_id" value="0">
+                              {% endif %}
+                                  <input type="hidden" name="laptop_id" value="{{single_laptop.id}}">
+
                                 <div class="form-group">
                                   <label for="name" class="col-form-label">Hello, My Name is</label>
                                   <div class="row">
                                     <div class="col">
-                                      <input type="text" name="first_name" class="form-control" placeholder="First Name" required>
+                                      <input type="text" name="first_name" class="form-control" placeholder="First Name"
+                                      {% if user.is_authenticated %} value="{{user.first_name}}"  {% endif %} required>
                                     </div>
                                     <div class="col">
-                                      <input type="text" name="last_name" class="form-control" placeholder="Last Name" required>
+                                      <input type="text" name="last_name" class="form-control" placeholder="Last Name"
+                                       {% if user.is_authenticated %} value="{{user.last_name}}"  {% endif %} required>
                                     </div>
                                   </div>
                                 </div>
@@ -180,16 +194,16 @@
                                       <select class="form-control" id="sel1" name="customer_need">
                                         <option value="I'm interested in this">I'm interested in this</option>
                                         <option value="I'd like to know your best price for this">I'd like to know your best price for this</option>
-                                        <option value="I'd like to test drive this">I'd like to test drive this</option>
+
                                         <option value="I'd like a history report for this">I'd like a history report for this</option>
                                       </select>
                                     </div>
 
                                 <div class="form-group">
-                                  <input type="text" name="car_title" class="form-control" value="LAMBORGHINI HURACÁN." readonly>
+                                  <input type="text" name="laptop_title" class="form-control" value="{{ single_laptop.laptop_title }}" readonly>
                                 </div>
 
-                                <div class="form-group">
+                                <!--<div class="form-group">
                                   <label for="name" class="col-form-label">I live in</label>
                                   <div class="row">
                                     <div class="col">
@@ -199,7 +213,7 @@
                                       <input type="text" name="state" class="form-control" placeholder="State" required>
                                     </div>
                                   </div>
-                                </div>
+                                </div>-->
 
                                 <div class="form-group">
                                   <div class="row">
