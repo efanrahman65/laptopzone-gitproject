@@ -26,7 +26,7 @@ SECRET_KEY = 'qr8(np1k8j4s$72!qyp%1e)8@l+#-h#9add)l@#hf2b%i676rt'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['fathomless-spire-04202.herokuapp.com', 'laptopzoneapp.co', 'www.laptopzoneapp.co']
 
 LOGIN_REDIRECT_URL = 'dashboard'
 
