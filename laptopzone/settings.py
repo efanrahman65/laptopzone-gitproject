@@ -30,6 +30,8 @@ ALLOWED_HOSTS = ['laptopzone.herokuapp.com', '127.0.0.1']
 
 LOGIN_REDIRECT_URL = 'dashboard'
 
+LOGIN_REDIRECT_URL = 'dashboard'
+
 
 # Application definition
 
@@ -173,6 +175,9 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'efanrahman32824@gmail.com'
 EMAIL_HOST_PASSWORD = 'lilboobigboo'
 EMAIL_USE_TLS = True
+<<<<<<< HEAD
 
 # Whitenoise settings
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+=======
+>>>>>>> e998ba8a2d2ce62896bf5eef70197071edec1244
