@@ -4892,7 +4892,7 @@ footer {
     margin-bottom: 0;
 }
 
-/** Coming soon start **/
+/** Coming soon start
 .coming-soon {
     background: rgba(0, 0, 0, 0.04) url(../img/car-1.jpg) top left repeat;
     background-size: cover;
@@ -4912,7 +4912,7 @@ footer {
     align-items: center;
     padding: 10px 0;
 }
-
+**/
 .coming-soon .coming-soon-info{
     max-width: 500px;
     margin: 0 auto;
@@ -6068,7 +6068,7 @@ footer {
     padding: 12px 30px 12px 30px;
 }
 
-/** Sub Banner start **/
+/** Sub Banner start
 .sub-banner {
     background: rgba(0, 0, 0, 0.04) url(../img/car-1.jpg) top left repeat;
     background-size: cover;
@@ -6078,7 +6078,7 @@ footer {
     position: relative;
     text-align: center;
     font-family: 'Roboto', sans-serif;
-}
+}**/
 
 .sub-banner .breadcrumb-area {
     letter-spacing: 1px;
