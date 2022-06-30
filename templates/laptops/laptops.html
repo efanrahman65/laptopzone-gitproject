@@ -72,6 +72,9 @@
                                     <li>{{laptop.processor}}</li>
                                     <li>{{laptop.storage}}</li>
                                     <li>{{laptop.display}}</li>
+                                    <li>
+                                      <a href="{% url 'App_Order:add' pk=laptop.pk %}" class="btn btn-sm btn-outline-primary text-uppercase active"> <i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                                    </li>
 
                                 </ul>
                             </div>

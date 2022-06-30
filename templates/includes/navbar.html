@@ -74,6 +74,18 @@
                             <i class="fa fa-search"></i>
                         </a>
                     </li>
+                    {% if request.user.is_authenticated %}
+        <li class="nav-item">
+          <a href="{% url 'App_Order:cart' %}" class="nav-link">
+              <i class="fa fa-shopping-cart"></i> Cart
+              <span class="badge badge-light">{{ request.user }}</span>
+          </a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+
+        </li>
+        {% endif %}
                 </ul>
             </div>
         </nav>

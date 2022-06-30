@@ -52,6 +52,9 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'App_Order',
+    'App_Payment',
+    'crispy_forms',
 
     # Providers
     'allauth.socialaccount.providers.facebook',
